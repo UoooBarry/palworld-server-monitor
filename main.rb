@@ -38,10 +38,12 @@ if memory_usage > threshold
   # clean caches
   puts "[#{timestamp}] Memory usage is above #{threshold}%. Cleaning caches..."
   `./cmd/clean_caches.sh`
+  sleep 3
 
   # check memory_usage after cleaning caches
   # restart pal_server if memory usage is till above threshold
   if memory_usage > threshold
+    puts "[#{timestamp}] Memory usage is still above #{threshold}%. Restarting Palworld server..."
     if config.dig("rcon_connection", "enable")
       connection = config.fetch('rcon_connection').symbolize_keys.except(:enable)
       client = PalworldRcon::Client.new(**connection)
@@ -51,7 +53,6 @@ if memory_usage > threshold
     end
 
     `systemctl restart #{config.dig("services", "palworld_service")}`
-    puts "[#{timestamp}] Memory usage is still above #{threshold}%. Restarting Palworld server..."
   end
 else
   puts "[#{timestamp}] Memory usage is below #{threshold}%. No action required."
