@@ -47,7 +47,7 @@ if memory_usage > threshold
       client = PalworldRcon::Client.new(**connection)
       puts "RCON connect success."
       client.shutdown(10, "Server is going to restart after 10 seconds")
-      sleep 10
+      sleep 15
     end
 
     `systemctl restart #{config.dig("services", "palworld_service")}`
