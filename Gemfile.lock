@@ -1,15 +1,20 @@
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: https://github.com/UoooBarry/palworld_rcon.git
+  revision: 1446b774a661a25faf06bdfedd0859c02eba7816
   specs:
     palworld_rcon (0.1.1)
       rconrb (~> 0.1.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
     rconrb (0.1.2)
 
 PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
-  palworld_rcon
+  palworld_rcon!
 
 BUNDLED WITH
    2.4.14

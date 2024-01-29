@@ -2,4 +2,4 @@
 
 source "https://rubygems.org"
 
-gem "palworld_rcon"
+gem "palworld_rcon", github: "UoooBarry/palworld_rcon"
