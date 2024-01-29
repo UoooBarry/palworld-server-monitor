@@ -35,10 +35,8 @@ end
 threshold = 90
 
 if memory_usage > threshold
-  # 输出日志
-  puts "[#{timestamp}] Memory usage is above #{threshold}%. Cleaning caches..."
-
   # clean caches
+  puts "[#{timestamp}] Memory usage is above #{threshold}%. Cleaning caches..."
   `./cmd/clean_caches.sh`
 
   # check memory_usage after cleaning caches
@@ -48,7 +46,7 @@ if memory_usage > threshold
       connection = config.fetch('rcon_connection').symbolize_keys.except(:enable)
       client = PalworldRcon::Client.new(**connection)
       puts "RCON connect success."
-      client.broadcast("Server is going to restart after 10 seconds")
+      client.shutdown(10, "Server is going to restart after 10 seconds")
       sleep 10
     end
 
