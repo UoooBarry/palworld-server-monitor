@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    palworld_rcon (0.1.0)
+      rconrb (~> 0.1.2)
+    rconrb (0.1.2)
+
+PLATFORMS
+  x86_64-darwin-22
+
+DEPENDENCIES
+  palworld_rcon
+
+BUNDLED WITH
+   2.4.14

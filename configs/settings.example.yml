@@ -1,0 +1,7 @@
+services:
+  palworld_service: "pal_server"
+rcon_connection:
+  enable: true
+  host: localhost
+  port: 25575
+  password: root
