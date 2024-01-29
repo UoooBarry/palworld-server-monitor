@@ -6,7 +6,7 @@ This ruby script is designed to monitor dedicated server memory usage. When memo
 
 Copy the example configuration file
 
-    $ cp ./configs/settings.example.yml settings.yml
+    $ cp ./configs/settings.example.yml ./configs/settings.yml
 
 ```yml
 # configs/settings.yml
