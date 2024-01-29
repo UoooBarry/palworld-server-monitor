@@ -30,5 +30,5 @@ bundle install
 After configured, you could add this script to crontab: `crontab -e`.
 
 ```crontab
-*/5 * * * * bundle exec ruby /palworld-server-monitor/main.rb >> /home/ubuntu/monitor_memory.log 2>&1
+*/5 * * * * cd /palworld-server-monitor && bundle exec main.rb >> /home/ubuntu/monitor_memory.log 2>&1
 ```
