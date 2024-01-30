@@ -1,6 +1,7 @@
 require 'yaml'
 require 'palworld_rcon'
 require 'time'
+require_relative './configs/configuration'
 
 class Hash
   def symbolize_keys
@@ -17,7 +18,7 @@ class Hash
   end
 end
 
-config = YAML.load_file('configs/settings.yml')
+config = configuration
 
 # define timestamp
 timestamp = Time.now.strftime("%Y-%m-%d %H:%M:%S")
@@ -30,7 +31,6 @@ def memory_usage
   (memory_used / memory_total) * 100
 end
 
-
 # set threshold
 threshold = 90
 
@@ -38,21 +38,15 @@ if memory_usage > threshold
   # clean caches
   puts "[#{timestamp}] Memory usage is above #{threshold}%. Cleaning caches..."
   `./cmd/clean_caches.sh`
-  sleep 3
+  sleep 10
 
   # check memory_usage after cleaning caches
   # restart pal_server if memory usage is till above threshold
   if memory_usage > threshold
     puts "[#{timestamp}] Memory usage is still above #{threshold}%. Restarting Palworld server..."
-    if config.dig("rcon_connection", "enable")
-      connection = config.fetch('rcon_connection').symbolize_keys.except(:enable)
-      client = PalworldRcon::Client.new(**connection)
-      puts "RCON connect success."
-      client.shutdown(10, "Server is going to restart after 10 seconds")
-      sleep 15
-    end
 
-    `systemctl restart #{config.dig("services", "palworld_service")}`
+    # reboot script
+    eval File.read("./reboot.rb")
   end
 else
   puts "[#{timestamp}] Memory usage is below #{threshold}%. No action required."
