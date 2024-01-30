@@ -1,11 +1,18 @@
+# frozen_string_literal: true
+
 require 'yaml'
 require 'palworld_rcon'
 require 'time'
 require_relative './configs/configuration'
 
+# Useful hash methods
 class Hash
   def symbolize_keys
-    transform_keys { |key| key.to_sym rescue key }
+    transform_keys do |key|
+      key.to_sym
+    rescue StandardError
+      key
+    end
   end
 
   def except!(*keys)
@@ -18,10 +25,8 @@ class Hash
   end
 end
 
-config = configuration
-
 # define timestamp
-timestamp = Time.now.strftime("%Y-%m-%d %H:%M:%S")
+timestamp = Time.now.strftime('%Y-%m-%d %H:%M:%S')
 
 # get current memory usage
 def memory_usage
@@ -46,7 +51,7 @@ if memory_usage > threshold
     puts "[#{timestamp}] Memory usage is still above #{threshold}%. Restarting Palworld server..."
 
     # reboot script
-    eval File.read("./reboot.rb")
+    eval File.read('./reboot.rb') # rubocop:disable Security/Eval
   end
 else
   puts "[#{timestamp}] Memory usage is below #{threshold}%. No action required."
