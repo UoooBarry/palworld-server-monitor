@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'activesupport', '~> 7.1.3'
 gem 'palworld_rcon'
 
 group :development, :test do

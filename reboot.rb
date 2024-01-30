@@ -2,6 +2,8 @@
 
 require 'palworld_rcon'
 require_relative './configs/configuration'
+require 'active_support/core_ext/hash'
+require 'active_support/core_ext/object/blank'
 
 config = configuration
 if config.dig('rcon_connection', 'enable')

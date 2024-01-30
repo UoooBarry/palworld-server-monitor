@@ -5,26 +5,6 @@ require 'palworld_rcon'
 require 'time'
 require_relative './configs/configuration'
 
-# Useful hash methods
-class Hash
-  def symbolize_keys
-    transform_keys do |key|
-      key.to_sym
-    rescue StandardError
-      key
-    end
-  end
-
-  def except!(*keys)
-    keys.each { |key| delete(key) }
-    self
-  end
-
-  def except(*keys)
-    dup.except!(*keys)
-  end
-end
-
 # define timestamp
 timestamp = Time.now.strftime('%Y-%m-%d %H:%M:%S')
 
