@@ -9,6 +9,7 @@ def configuration
   config = YAML.load_file('configs/settings.yml')
 
   raise ConfigError, 'palworld_service is missing.' if config.dig('services', 'palworld_service').blank?
+  raise ConfigError, 'restart_threshold is missing.' if config.dig('services', 'restart_threshold').blank?
 
   config
 end
