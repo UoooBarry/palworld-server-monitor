@@ -12,7 +12,8 @@ Copy the example configuration file
 # configs/settings.yml
 
 services:
-  palworld_service: "pal_server" # systemctl service name
+  palworld_service: "pal_server" # systemctl service name_relative
+  restart_threshold: 95 # Once above this threshold, palworld_service will clean caches and restart
 rcon_connection: # modify Pal/Saved/Config/LinuxServer/PalWorldSettings.ini to enable rcon
   enable: false # when this option is enabled, palworld server will broadcast a message before the server be restarted.
   host: localhost

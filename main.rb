@@ -3,7 +3,7 @@
 require 'yaml'
 require 'palworld_rcon'
 require 'time'
-require_relative './configs/configuration'
+require './configs/configuration'
 
 # define timestamp
 timestamp = Time.now.strftime('%Y-%m-%d %H:%M:%S')
@@ -17,7 +17,7 @@ def memory_usage
 end
 
 # set threshold
-threshold = 90
+threshold = configuration.dig('services', 'restart_threshold')
 
 if memory_usage > threshold
   # clean caches
@@ -31,7 +31,7 @@ if memory_usage > threshold
     puts "[#{timestamp}] Memory usage is still above #{threshold}%. Restarting Palworld server..."
 
     # reboot script
-    eval File.read('./reboot.rb') # rubocop:disable Security/Eval
+    eval File.read('./reboot.rb')
   end
 else
   puts "[#{timestamp}] Memory usage is below #{threshold}%. No action required."

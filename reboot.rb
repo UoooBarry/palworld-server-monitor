@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 require 'palworld_rcon'
-require_relative './configs/configuration'
+require './configs/configuration'
 require 'active_support/core_ext/hash'
-require 'active_support/core_ext/object/blank'
 
 config = configuration
 if config.dig('rcon_connection', 'enable')
@@ -15,3 +14,4 @@ if config.dig('rcon_connection', 'enable')
   puts 'RCON shutdown.'
 end
 `systemctl restart #{config.dig('services', 'palworld_service')}`
+puts 'Service restarted.'
