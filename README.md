@@ -43,3 +43,10 @@ After configured, you could add this script to crontab: `sudo crontab -e`.
 # reboot the service 6 hours and record all the logs in monitor_memory.log
 0 */6 * * * /palworld-server-monitor && bundle exec reboot.rb >> /palworld-server-monitor/logs/monitor_memory.log 2>&1
 ```
+
+### Schedule a regular cache clean
+
+```bash
+# run clean_caches script every 10 minutes
+*/10 * * * * /palworld-server-monitor/cmd/clean_caches.sh
+```
