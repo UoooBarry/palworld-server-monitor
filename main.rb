@@ -31,7 +31,7 @@ if memory_usage > threshold
     puts "[#{timestamp}] Memory usage is still above #{threshold}%. Restarting Palworld server..."
 
     # reboot script
-    eval File.read('./reboot.rb')
+    eval File.read('./reboot.rb') # rubocop:disable Security/Eval
   end
 else
   puts "[#{timestamp}] Memory usage is below #{threshold}%. No action required."
