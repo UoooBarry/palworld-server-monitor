@@ -1,6 +1,6 @@
 # Palworld Server Monitor
 
-This ruby script is designed to monitor dedicated server memory usage. When memory usage exceeds the threshold, the script automatically cleans up Linux memory. If memory usage is still above the threshold after running the clean caches script, the Palworld server service will be rebooted.
+This Ruby script is specifically crafted to address memory shortages frequently encountered in Palworld dedicated servers. As the Palworld server environment often faces memory constraints, this script is engineered to monitor memory usage diligently. When the memory usage surpasses the designated threshold, the script initiates an automatic cleanup of Linux memory. However, if memory usage persists above the threshold even after executing the cache cleaning script, this script will restart the Palworld server service.
 
 ## Configuration
 
@@ -33,7 +33,7 @@ bundle install
 After configured, you could add this script to crontab: `sudo crontab -e`.
 
 ```bash
-# run the script every 5 minutes and record all the logs in monitor_memory.log
+# run the memory monitor script every 5 minutes and record all the logs in monitor_memory.log
 */5 * * * * cd /palworld-server-monitor && bundle exec main.rb >> /palworld-server-monitor/logs/monitor_memory.log 2>&1
 ```
 
