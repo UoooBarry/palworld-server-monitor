@@ -1,5 +1,7 @@
 # Palworld Server Monitor
 
+[English](README.md) | [简体中文](README.zh-cn.md)
+
 This Ruby script is specifically crafted to address memory shortages frequently encountered in Palworld dedicated servers. As the Palworld server environment often faces memory constraints, this script is engineered to monitor memory usage diligently. When the memory usage surpasses the designated threshold, the script initiates an automatic cleanup of Linux memory. However, if memory usage persists above the threshold even after executing the cache cleaning script, this script will restart the Palworld server service.
 
 ## Configuration
